@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started with SegmaVisionPro &mdash; SegmaVisionPro 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bd413139" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=a56c686a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Pre-Deployment Checklist" href="../setup/pre-deployment-checklist.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SegmaVisionPro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Setup &amp; Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/docker-setup.html">Docker Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/nvidia-toolkit.html">NVIDIA Container Toolkit Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/ngc-setup.html">NGC Model Download Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/pre-deployment-checklist.html">Pre-Deployment Checklist</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Features &amp; Usage</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started with SegmaVisionPro</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-clone-the-repository">Step 1: Clone the Repository</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-download-as-zip">Alternative: Download as ZIP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-start-with-docker-compose">Step 2: Start with Docker Compose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-verify-installation">Step 3: Verify Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-access-the-application">Step 4: Access the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-5-create-your-account">Step 5: Create Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-6-start-using-segmavisionpro">Step 6: Start Using SegmaVisionPro</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#option-a-quick-inference-recommended-for-first-time-users">Option A: Quick Inference (Recommended for first-time users)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-b-dataset-upload-and-fine-tuning">Option B: Dataset Upload and Fine-tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#essential-docker-compose-commands">Essential Docker Compose Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-services">Managing Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-commands">Troubleshooting Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-summary">Quick Start Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#service-wont-start">Service Won’t Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-not-detected">GPU Not Detected</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SegmaVisionPro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting Started with SegmaVisionPro</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/features/getting-started.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-started-with-segmavisionpro">
+<h1>Getting Started with SegmaVisionPro<a class="headerlink" href="#getting-started-with-segmavisionpro" title="Link to this heading"></a></h1>
+<p>This guide will walk you through cloning the SegmaVisionPro repository and getting the platform running using Docker Compose in just a few simple steps.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Before you begin, ensure you have completed the setup requirements:</p>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="../setup/docker-setup.html"><span class="std std-doc">Docker installed and running</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="../setup/nvidia-toolkit.html"><span class="std std-doc">NVIDIA Container Toolkit configured</span></a> (for GPU support)</p></li>
+<li><p>✅ <a class="reference internal" href="../setup/ngc-setup.html"><span class="std std-doc">NGC CLI configured</span></a> (for model downloads)</p></li>
+<li><p>✅ <a class="reference internal" href="../setup/pre-deployment-checklist.html"><span class="std std-doc">Pre-deployment checklist completed</span></a></p></li>
+</ul>
+</section>
+<section id="step-1-clone-the-repository">
+<h2>Step 1: Clone the Repository<a class="headerlink" href="#step-1-clone-the-repository" title="Link to this heading"></a></h2>
+<p>Clone the SegmaVisionPro repository to your local machine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-org/SegmaVisionPro.git
+
+<span class="c1"># Navigate to the project directory</span>
+<span class="nb">cd</span><span class="w"> </span>SegmaVisionPro
+</pre></div>
+</div>
+<section id="alternative-download-as-zip">
+<h3>Alternative: Download as ZIP<a class="headerlink" href="#alternative-download-as-zip" title="Link to this heading"></a></h3>
+<p>If you prefer not to use Git:</p>
+<ol class="arabic simple">
+<li><p>Visit the <a class="reference external" href="https://github.com/your-org/SegmaVisionPro">SegmaVisionPro GitHub repository</a></p></li>
+<li><p>Click the green “Code” button → “Download ZIP”</p></li>
+<li><p>Extract the ZIP file to your desired location</p></li>
+</ol>
+</section>
+</section>
+<section id="step-2-start-with-docker-compose">
+<h2>Step 2: Start with Docker Compose<a class="headerlink" href="#step-2-start-with-docker-compose" title="Link to this heading"></a></h2>
+<p>SegmaVisionPro comes with pre-configured environment settings that work out-of-the-box. Simply start the application using Docker Compose:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start all services in detached mode</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+<p>This will start all the required services:</p>
+<ul class="simple">
+<li><p><strong>Backend API</strong> (FastAPI) on port 8000</p></li>
+<li><p><strong>Frontend</strong> (React) on port 3000</p></li>
+<li><p><strong>Database</strong> (PostgreSQL) for data storage</p></li>
+</ul>
+</section>
+<section id="step-3-verify-installation">
+<h2>Step 3: Verify Installation<a class="headerlink" href="#step-3-verify-installation" title="Link to this heading"></a></h2>
+<p>Check that all services are running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check running containers</span>
+docker-compose<span class="w"> </span>ps
+</pre></div>
+</div>
+<p>Expected output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span>                    <span class="n">Command</span>               <span class="n">State</span>           <span class="n">Ports</span>
+<span class="o">------------------------------------------------------------------------</span>
+<span class="n">segmavision_backend</span>     <span class="n">python</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>                    <span class="n">Up</span>      <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8000</span><span class="o">-&gt;</span><span class="mi">8000</span><span class="o">/</span><span class="n">tcp</span>
+<span class="n">segmavision_frontend</span>    <span class="n">npm</span> <span class="n">start</span>                        <span class="n">Up</span>      <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">3000</span><span class="o">-&gt;</span><span class="mi">3000</span><span class="o">/</span><span class="n">tcp</span>
+<span class="n">segmavision_db</span>         <span class="n">docker</span><span class="o">-</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">sh</span> <span class="n">postgres</span>    <span class="n">Up</span>      <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">5432</span><span class="o">-&gt;</span><span class="mi">5432</span><span class="o">/</span><span class="n">tcp</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-access-the-application">
+<h2>Step 4: Access the Application<a class="headerlink" href="#step-4-access-the-application" title="Link to this heading"></a></h2>
+<p>Open your web browser and navigate to:</p>
+<p><strong>Frontend</strong>: <a class="reference external" href="http://localhost:3000">http://localhost:3000</a></p>
+<p>You should see the SegmaVisionPro login page.</p>
+</section>
+<section id="step-5-create-your-account">
+<h2>Step 5: Create Your Account<a class="headerlink" href="#step-5-create-your-account" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Click “Register”</strong> on the login page</p></li>
+<li><p><strong>Fill in your details</strong>:</p>
+<ul class="simple">
+<li><p>Full Name</p></li>
+<li><p>Email Address</p></li>
+<li><p>Password</p></li>
+<li><p>Confirm Password</p></li>
+</ul>
+</li>
+<li><p><strong>Click “Register”</strong> to create your account</p></li>
+<li><p><strong>Login</strong> with your new credentials</p></li>
+</ol>
+</section>
+<section id="step-6-start-using-segmavisionpro">
+<h2>Step 6: Start Using SegmaVisionPro<a class="headerlink" href="#step-6-start-using-segmavisionpro" title="Link to this heading"></a></h2>
+<p>Once logged in, you have two main options:</p>
+<section id="option-a-quick-inference-recommended-for-first-time-users">
+<h3>Option A: Quick Inference (Recommended for first-time users)<a class="headerlink" href="#option-a-quick-inference-recommended-for-first-time-users" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Navigate to the Inference section</strong></p></li>
+<li><p><strong>Upload an image</strong> (supports JPG, PNG formats)</p></li>
+<li><p><strong>Select a pre-trained model</strong>:</p>
+<ul class="simple">
+<li><p>GroundingDINO (object detection)</p></li>
+<li><p>SAM (segmentation)</p></li>
+</ul>
+</li>
+<li><p><strong>Click “Run Inference”</strong></p></li>
+<li><p><strong>View results</strong> with detected objects and confidence scores</p></li>
+</ol>
+</section>
+<section id="option-b-dataset-upload-and-fine-tuning">
+<h3>Option B: Dataset Upload and Fine-tuning<a class="headerlink" href="#option-b-dataset-upload-and-fine-tuning" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Navigate to the Fine-tune section</strong></p></li>
+<li><p><strong>Prepare your dataset</strong> in COCO format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>your-dataset/
+├── annotations/
+│   ├── instances_train.json
+│   └── instances_val.json
+├── train/
+│   ├── image1.jpg
+│   ├── image2.jpg
+│   └── ...
+└── val/
+    ├── image1.jpg
+    ├── image2.jpg
+    └── ...
+</pre></div>
+</div>
+</li>
+<li><p><strong>Upload your dataset</strong> using the upload form</p></li>
+<li><p><strong>Configure training parameters</strong>:</p>
+<ul class="simple">
+<li><p>Model architecture</p></li>
+<li><p>Epochs</p></li>
+<li><p>Learning rate</p></li>
+<li><p>Batch size</p></li>
+</ul>
+</li>
+<li><p><strong>Start training</strong> and monitor progress</p></li>
+<li><p><strong>Use your trained model</strong> for inference</p></li>
+</ol>
+</section>
+</section>
+<section id="essential-docker-compose-commands">
+<h2>Essential Docker Compose Commands<a class="headerlink" href="#essential-docker-compose-commands" title="Link to this heading"></a></h2>
+<section id="managing-services">
+<h3>Managing Services<a class="headerlink" href="#managing-services" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start all services</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+
+<span class="c1"># Stop all services</span>
+docker-compose<span class="w"> </span>down
+
+<span class="c1"># Restart all services</span>
+docker-compose<span class="w"> </span>restart
+
+<span class="c1"># View logs from all services</span>
+docker-compose<span class="w"> </span>logs
+
+<span class="c1"># View logs from specific service</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>backend
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting-commands">
+<h3>Troubleshooting Commands<a class="headerlink" href="#troubleshooting-commands" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if ports are available</span>
+sudo<span class="w"> </span>netstat<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:3000
+sudo<span class="w"> </span>netstat<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:8000
+
+<span class="c1"># Check container status</span>
+docker-compose<span class="w"> </span>ps
+
+<span class="c1"># View container logs</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>backend
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>frontend
+</pre></div>
+</div>
+</section>
+</section>
+<section id="quick-start-summary">
+<h2>Quick Start Summary<a class="headerlink" href="#quick-start-summary" title="Link to this heading"></a></h2>
+<p>The streamlined workflow is:</p>
+<ol class="arabic simple">
+<li><p><strong>Clone</strong> → <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/your-org/SegmaVisionPro.git</span></code></p></li>
+<li><p><strong>Start</strong> → <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">SegmaVisionPro</span> <span class="pre">&amp;&amp;</span> <span class="pre">docker-compose</span> <span class="pre">up</span> <span class="pre">-d</span></code></p></li>
+<li><p><strong>Register</strong> → Visit <a class="reference external" href="http://localhost:3000">http://localhost:3000</a> and create account</p></li>
+<li><p><strong>Login</strong> → Use your credentials to access the platform</p></li>
+<li><p><strong>Use</strong> → Start with inference or upload datasets for training</p></li>
+</ol>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="service-wont-start">
+<h3>Service Won’t Start<a class="headerlink" href="#service-wont-start" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Check port conflicts</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if ports are already in use</span>
+sudo<span class="w"> </span>netstat<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:3000
+sudo<span class="w"> </span>netstat<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:8000
+</pre></div>
+</div>
+</li>
+<li><p><strong>Check Docker daemon</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure Docker is running</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker
+</pre></div>
+</div>
+</li>
+<li><p><strong>Check container logs</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># View specific service logs</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>backend
+docker-compose<span class="w"> </span>logs<span class="w"> </span>frontend
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="gpu-not-detected">
+<h3>GPU Not Detected<a class="headerlink" href="#gpu-not-detected" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Verify NVIDIA runtime</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span>nvidia/cuda:11.0-base<span class="w"> </span>nvidia-smi
+</pre></div>
+</div>
+</li>
+<li><p><strong>Check container GPU access</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>backend<span class="w"> </span>nvidia-smi
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="getting-help">
+<h2>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading"></a></h2>
+<p>If you encounter issues:</p>
+<ul class="simple">
+<li><p>Check the troubleshooting sections in the individual setup guides</p></li>
+<li><p>Review container logs: <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">logs</span> <span class="pre">[service-name]</span></code></p></li>
+<li><p>Visit our <a class="reference external" href="https://github.com/your-org/SegmaVisionPro/issues">GitHub Issues</a></p></li>
+<li><p>Check the <a class="reference external" href="http://localhost:8000/docs">API documentation</a> when running</p></li>
+</ul>
+<p>Happy coding with SegmaVisionPro! 🚀</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../setup/pre-deployment-checklist.html" class="btn btn-neutral float-left" title="Pre-Deployment Checklist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SegmaVisionPro Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

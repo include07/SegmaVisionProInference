@@ -20,6 +20,7 @@ Get up and running with SegmaVisionPro in minutes:
 2. [Set up NVIDIA Container Toolkit](setup/nvidia-toolkit.md) (for GPU support)
 3. [Configure NGC CLI](setup/ngc-setup.md) (for model downloads)
 4. Complete the [Pre-Deployment Checklist](setup/pre-deployment-checklist.md)
+5. [Clone and run the project](features/getting-started.md) 🚀
 
 ## Table of Contents
 
@@ -31,6 +32,13 @@ setup/docker-setup
 setup/nvidia-toolkit
 setup/ngc-setup
 setup/pre-deployment-checklist
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Features & Usage
+
+features/getting-started
 ```
 
 ## Need Help?
