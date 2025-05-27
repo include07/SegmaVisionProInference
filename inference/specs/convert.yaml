@@ -1,0 +1,6 @@
+data:
+  input_format: COCO
+  output_format: ODVG
+results_dir: /data/finetune_datasets/Jalaleddin/odvg/annotations/
+coco:
+  ann_file: /data/finetune_datasets/Jalaleddin/coco/annotations/train.json

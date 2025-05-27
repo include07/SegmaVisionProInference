@@ -1,0 +1,502 @@
+/* src/App.css */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap');
+
+/* Define CSS Variables for the theme */
+:root {
+  --bg-color-dark: #0c0c1f; /* Dark blue/purple */
+  --bg-color-medium: #1a1a3a; /* Slightly lighter dark */
+  --text-color-primary: #e0e0ff; /* Light lavender/white */
+  --text-color-secondary: #a0a0cc; /* Greyish lavender */
+  --accent-color-primary: #00f0f0; /* Neon cyan */
+  --accent-color-secondary: #ff00ff; /* Neon magenta (optional) */
+  --border-color: #3a3a5a;
+  --glow-color: rgba(0, 240, 240, 0.7); /* Cyan glow */
+  --error-color: #ff4040;
+  --success-color: #40ff40;
+  --font-family-main: 'Rajdhani', sans-serif; /* Futuristic font */
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: var(--font-family-main);
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-primary);
+  line-height: 1.6;
+}
+
+.App.futuristic-theme {
+  padding: 0; /* Remove default padding if needed */
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto; /* Center content area */
+}
+
+h1, h2 {
+    color: var(--accent-color-primary);
+    text-shadow: 0 0 5px var(--glow-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Navigation Bar */
+.app-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes logo/links and user info apart */
+  padding: 15px 30px;
+  background-color: var(--bg-color-medium);
+  border-bottom: 1px solid var(--accent-color-primary);
+  box-shadow: 0 0 15px rgba(0, 240, 240, 0.3); /* Subtle glow */
+}
+
+.nav-logo-link {
+    line-height: 0; /* Prevent extra space */
+}
+
+.nav-logo {
+  height: 40px; /* Adjust logo size as needed */
+  width: auto;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+.nav-logo:hover {
+    transform: scale(1.1);
+}
+
+.app-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Space between nav items */
+}
+
+.app-nav ul li { display: inline; }
+
+/* Style nav links */
+.app-nav a, .app-nav button {
+  color: var(--text-color-primary);
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: color 0.3s ease, background-color 0.3s ease, text-shadow 0.3s ease;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.app-nav a:hover,
+.app-nav a:focus,
+.app-nav button:hover,
+.app-nav button:focus {
+  color: var(--bg-color-dark);
+  background-color: var(--accent-color-primary);
+  text-shadow: none;
+  outline: none;
+}
+
+.nav-user-info {
+    margin-left: auto; /* Pushes this item to the far right */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.nav-user-info span {
+    color: var(--text-color-secondary);
+    font-weight: 500;
+}
+.logout-button {
+    background-color: transparent;
+    border: 1px solid var(--accent-color-secondary); /* Use secondary accent */
+    color: var(--accent-color-secondary);
+}
+.logout-button:hover,
+.logout-button:focus {
+    background-color: var(--accent-color-secondary);
+    color: var(--bg-color-dark);
+    border-color: var(--accent-color-secondary);
+}
+
+/* Forms (Login & Register) */
+form {
+  background-color: var(--bg-color-medium);
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 400px; /* Limit form width */
+  margin: 20px auto; /* Center form */
+}
+
+form div { margin-bottom: 20px; } /* More space */
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-color-secondary);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  background-color: var(--bg-color-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color-primary);
+  font-family: var(--font-family-main);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--accent-color-primary);
+  box-shadow: 0 0 8px var(--glow-color);
+}
+
+/* Submit Buttons */
+button[type="submit"] {
+  padding: 12px 25px;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--accent-color-primary), var(--accent-color-secondary));
+  color: var(--bg-color-dark);
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  width: 100%; /* Make button full width of form */
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 240, 240, 0.4); /* Brighter glow */
+}
+button[type="submit"]:active {
+    transform: translateY(0px);
+}
+
+
+/* Messages (Success/Error) */
+.message {
+  padding: 12px;
+  margin-top: 20px;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid;
+  font-weight: 500;
+}
+.message.success {
+  color: #e0ffe0; /* Light green text */
+  background-color: rgba(64, 255, 64, 0.1); /* Transparent green */
+  border-color: var(--success-color);
+  text-shadow: 0 0 5px var(--success-color);
+}
+.message.error {
+  color: #ffe0e0; /* Light red text */
+  background-color: rgba(255, 64, 64, 0.1); /* Transparent red */
+  border-color: var(--error-color);
+   text-shadow: 0 0 5px var(--error-color);
+}
+
+/* Dashboard Styling */
+.dashboard-data {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--bg-color-medium);
+    border: 1px solid var(--accent-color-primary);
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--glow-color);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: monospace; /* Classic tech font */
+    color: var(--accent-color-primary); /* Make data stand out */
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+/* Homepage Specific Styles */
+.home-page-content {
+  padding: 30px;
+  text-align: center; /* Center align text by default */
+}
+
+.home-header {
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 20px;
+}
+
+.home-header h1 {
+  font-size: 2.8rem; /* Larger headline */
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px var(--glow-color);
+}
+
+.tagline {
+  font-size: 1.4rem;
+  color: var(--text-color-secondary);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.intro-text {
+    max-width: 700px;
+    margin: 0 auto 40px auto; /* Center intro text block */
+    font-size: 1.1rem;
+    color: var(--text-color-primary);
+}
+
+.features-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Space between feature sections */
+}
+
+.feature-section {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Space between image and text */
+  padding: 30px;
+  background-color: rgba(26, 26, 58, 0.5); /* Slightly transparent dark bg */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-align: left; /* Align text left within sections */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-section:hover {
+    background-color: rgba(26, 26, 58, 0.8);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+/* Reverse layout for alternating sections */
+.feature-section-reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-image {
+  flex: 1; /* Take up available space */
+  max-width: 40%; /* Limit image width */
+  overflow: hidden; /* Hide overflow */
+  border-radius: 5px;
+}
+
+.feature-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.feature-section:hover .feature-image img {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+.feature-text {
+  flex: 1; /* Take up available space */
+  max-width: 55%;
+}
+
+.feature-text h2 {
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--accent-color-primary);
+}
+
+.feature-text p {
+  font-size: 1rem;
+  color: var(--text-color-secondary);
+  line-height: 1.7;
+}
+
+.home-footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-color-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feature-section,
+  .feature-section-reverse {
+    flex-direction: column; /* Stack image and text on small screens */
+    text-align: center;
+  }
+  .feature-image,
+  .feature-text {
+    max-width: 90%; /* Allow more width when stacked */
+    flex: none; /* Reset flex basis */
+  }
+  .home-header h1 { font-size: 2.2rem; }
+  .tagline { font-size: 1.2rem; }
+}
+
+/* Finetune Page Styles */
+.finetune-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.finetune-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.finetune-page p {
+    text-align: center;
+    color: var(--text-color-secondary);
+    margin-bottom: 30px;
+}
+
+.upload-form-container {
+    background-color: var(--bg-color-medium);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--accent-color-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-primary);
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-color-primary);
+    color: var(--bg-color-dark);
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+.submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.error-message {
+    color: var(--error-color);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    background-color: rgba(255, 64, 64, 0.1);
+}
+
+.success-message {
+    color: var(--success-color);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    background-color: rgba(64, 255, 64, 0.1);
+}
+
+/* Dataset Structure Guide Styles */
+.dataset-guide {
+    background-color: var(--bg-color-medium);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    border: 1px solid var(--border-color);
+}
+
+.dataset-guide h2 {
+    color: var(--accent-color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.dataset-guide h3 {
+    color: var(--accent-color-primary);
+    margin: 1.5rem 0 1rem;
+}
+
+.folder-structure {
+    background-color: var(--bg-color-dark);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.folder-structure pre,
+.annotation-format pre {
+    font-family: monospace;
+    white-space: pre-wrap;
+    color: var(--text-color-primary);
+    line-height: 1.4;
+}
+
+.annotation-format {
+    background-color: var(--bg-color-dark);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.requirements-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.requirements-list li {
+    color: var(--text-color-secondary);
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.requirements-list li:before {
+    content: "•";
+    color: var(--accent-color-primary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}

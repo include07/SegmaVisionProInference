@@ -1,0 +1,131 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  data_services:
+      image: nvcr.io/nvidia/tao/tao-toolkit:5.5.0-data-services
+      container_name: data_services
+      volumes:
+        - ./inference/pre_trained_models:/pre_trained_models # Maps local 'tao_experiments' dir
+        - ./backend/uploads:/data                             # Maps local 'data' dir
+        - ./inference/specs:/specs                             # Maps local 'specs' dir
+        - ./backend/output:/results                           # Maps local 'results' dir
+        - ./inference/dot_cache:/.cache                        # Maps local 'dot_cache' dir as placeholder for host cache
+        - ./inference/hf_cache:/hf_cache
+      # Keep the container running
+      command: sleep infinity
+      # Request GPU access
+      deploy:
+        resources:
+          reservations:
+            devices:
+              - driver: nvidia
+                count: 1
+                capabilities: [gpu]
+      # Restart policy
+      restart: unless-stopped
+  tao_server:
+      # Use the environment variable for the image name
+      image: nvcr.io/nvidia/tao/tao-toolkit:5.5.0-pyt
+
+      # Assign a predictable container name
+      container_name: inference
+
+      # Map local placeholder directories to container paths
+      volumes:
+        - ./inference/pre_trained_models:/pre_trained_models # Maps local 'tao_experiments' dir
+        - ./backend/uploads:/data                             # Maps local 'data' dir
+        - ./inference/specs:/specs                             # Maps local 'specs' dir
+        - ./backend/output:/results                           # Maps local 'results' dir
+        - ./inference/dot_cache:/.cache                        # Maps local 'dot_cache' dir as placeholder for host cache
+        - ./inference/hf_cache:/hf_cache
+
+      # Keep the container running
+      command: sleep infinity
+
+      # Request GPU access
+      deploy:
+        resources:
+          reservations:
+            devices:
+              - driver: nvidia
+                count: 1
+                capabilities: [gpu]
+
+      # Restart policy
+      restart: unless-stopped
+
+      # --- DockerOptions translated ---
+      # Increased shared memory
+      shm_size: '64g' # Note: Compose usually uses lowercase 'g'
+
+
+      # Optional but recommended ulimits from previous TAO logs/examples
+      ulimits:
+        memlock: -1
+        stack: 67108864
+      environment:
+        - HF_HOME=/hf_cache
+        - CUDA_VISIBLE_DEVICES=0
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: vision
+    ports:
+      - "5433:5432" # Host:Container
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  backend:
+    container_name: flask_backend
+    build: ./backend
+    ports:
+      - "5000:5000" # Host:Container
+    volumes:
+      - ./backend:/app
+      - ./inference/specs:/specs
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file:
+      - ./backend/.env # Load environment variables from .env file
+    depends_on:
+      - postgres
+      - tao_server
+    restart: unless-stopped
+
+    
+  frontend:
+    container_name: react_frontend_dev
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000" # Host:Container
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      # CORRECTED: Use the URL accessible from the host browser
+      REACT_APP_API_URL: http://localhost:5000/api/
+      CHOKIDAR_USEPOLLING: "true"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  adminer:
+    image: adminer
+    container_name: adminer_gui
+    restart: unless-stopped
+    ports:
+      - "8081:8080" # Host:Container
+    depends_on:
+      - postgres
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres_db
+volumes:
+  db_data:

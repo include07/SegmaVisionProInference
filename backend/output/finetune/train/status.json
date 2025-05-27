@@ -1,0 +1,47 @@
+{"date": "5/21/2025", "time": "17:27:16", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:27:17", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "17:27:18", "status": "FAILURE", "verbosity": "INFO", "message": "4 is not supported.                                   Only bf16, fp16, and fp32 are supported"}
+{"date": "5/21/2025", "time": "17:27:27", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:27:29", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "17:27:30", "status": "FAILURE", "verbosity": "INFO", "message": "4 is not supported.                                   Only bf16, fp16, and fp32 are supported"}
+{"date": "5/21/2025", "time": "17:30:2", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:30:3", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "17:30:7", "status": "FAILURE", "verbosity": "INFO", "message": "CUDA out of memory. Tried to allocate 958.00 MiB. GPU "}
+{"date": "5/21/2025", "time": "17:30:15", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:30:21", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "17:30:25", "status": "FAILURE", "verbosity": "INFO", "message": "CUDA out of memory. Tried to allocate 958.00 MiB. GPU "}
+{"date": "5/21/2025", "time": "17:33:10", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:33:10", "status": "FAILURE", "verbosity": "INFO", "message": "[Errno 2] No such file or directory: '/data/finetune_datasets/Jalaleddin/odvg/annotations/val_remapped.json'"}
+{"date": "5/21/2025", "time": "17:33:18", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:33:18", "status": "FAILURE", "verbosity": "INFO", "message": "[Errno 2] No such file or directory: '/data/finetune_datasets/Jalaleddin/odvg/annotations/val_remapped.json'"}
+{"date": "5/21/2025", "time": "17:35:25", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:35:27", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "17:35:31", "status": "FAILURE", "verbosity": "INFO", "message": "CUDA out of memory. Tried to allocate 958.00 MiB. GPU "}
+{"date": "5/21/2025", "time": "17:35:40", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:35:41", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "17:35:45", "status": "FAILURE", "verbosity": "INFO", "message": "CUDA out of memory. Tried to allocate 958.00 MiB. GPU "}
+{"date": "5/21/2025", "time": "17:37:27", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:37:29", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "17:37:30", "status": "FAILURE", "verbosity": "INFO", "message": "8 is not supported.                                   Only bf16, fp16, and fp32 are supported"}
+{"date": "5/21/2025", "time": "17:37:39", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:37:41", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "17:37:42", "status": "FAILURE", "verbosity": "INFO", "message": "8 is not supported.                                   Only bf16, fp16, and fp32 are supported"}
+{"date": "5/21/2025", "time": "17:39:6", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:39:8", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "17:40:39", "status": "RUNNING", "verbosity": "INFO", "message": "Eval metrics generated.", "kpi": {"bbox_val_mAP": "0.45301910633325004", "bbox_val_mAP50": "0.6425576422634003", "segm_val_mAP": "7.487238068819406e-05", "segm_val_mAP50": "0.0005741426915240785", "val_loss": 2.676011085510254}}
+{"date": "5/21/2025", "time": "17:40:39", "status": "RUNNING", "verbosity": "INFO", "message": "Train metrics generated.", "kpi": {"train_loss": 316.63604736328125}}
+{"date": "5/21/2025", "time": "17:42:8", "status": "RUNNING", "verbosity": "INFO", "message": "Eval metrics generated.", "kpi": {"bbox_val_mAP": "0.4425660525901641", "bbox_val_mAP50": "0.6256786560827233", "segm_val_mAP": "3.412500857575351e-05", "segm_val_mAP50": "0.0001693573417280349", "val_loss": 2.754166841506958}}
+{"date": "5/21/2025", "time": "17:42:8", "status": "RUNNING", "verbosity": "INFO", "message": "Train metrics generated.", "kpi": {"train_loss": 82.07792663574219}}
+{"date": "5/21/2025", "time": "17:42:9", "status": "RUNNING", "verbosity": "INFO", "message": "Train finished successfully.", "kpi": {"train_loss": 82.07792663574219}}
+{"date": "5/21/2025", "time": "17:42:19", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "17:42:19", "status": "RUNNING", "verbosity": "INFO", "message": "Resuming training from checkpoint: /results/finetune/train/model_epoch_001.pth"}
+{"date": "5/21/2025", "time": "17:42:21", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "17:42:28", "status": "RUNNING", "verbosity": "INFO", "message": "Train finished successfully."}
+{"date": "5/21/2025", "time": "18:6:13", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "18:6:13", "status": "RUNNING", "verbosity": "INFO", "message": "Resuming training from checkpoint: /results/finetune/train/model_epoch_001.pth"}
+{"date": "5/21/2025", "time": "18:6:15", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "18:6:23", "status": "RUNNING", "verbosity": "INFO", "message": "Train finished successfully."}
+{"date": "5/21/2025", "time": "18:6:37", "status": "STARTED", "verbosity": "INFO", "message": "Starting Mask Grounding DINO train."}
+{"date": "5/21/2025", "time": "18:6:37", "status": "RUNNING", "verbosity": "INFO", "message": "Resuming training from checkpoint: /results/finetune/train/model_epoch_001.pth"}
+{"date": "5/21/2025", "time": "18:6:41", "status": "RUNNING", "verbosity": "INFO", "message": "Freezed module ['backbone', 'bert']"}
+{"date": "5/21/2025", "time": "18:6:49", "status": "RUNNING", "verbosity": "INFO", "message": "Train finished successfully."}
