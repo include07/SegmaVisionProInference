@@ -1,0 +1,301 @@
+/* Custom CSS for SegmaVisionPro Documentation */
+
+/* Brand Colors */
+:root {
+  --segma-primary: #3b82f6;
+  --segma-secondary: #64748b;
+  --segma-success: #10b981;
+  --segma-warning: #f59e0b;
+  --segma-error: #ef4444;
+  --segma-bg: #f8fafc;
+  --segma-surface: #ffffff;
+}
+
+/* Header Customization */
+.wy-nav-top {
+  background-color: var(--segma-primary) !important;
+}
+
+.wy-nav-top a {
+  color: white !important;
+}
+
+/* Sidebar Customization */
+.wy-nav-side {
+  background-color: var(--segma-bg) !important;
+}
+
+.wy-menu-vertical a {
+  color: var(--segma-secondary) !important;
+}
+
+.wy-menu-vertical a:hover {
+  background-color: var(--segma-primary) !important;
+  color: white !important;
+}
+
+.wy-menu-vertical li.current a {
+  background-color: var(--segma-primary) !important;
+  color: white !important;
+}
+
+/* Content Area */
+.wy-nav-content {
+  background-color: white;
+}
+
+/* Code Blocks */
+.highlight {
+  background-color: #f8f9fa !important;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.highlight pre {
+  margin: 0;
+  background: transparent !important;
+}
+
+/* Tables */
+table.docutils {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+table.docutils th,
+table.docutils td {
+  border: 1px solid #dee2e6;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+table.docutils th {
+  background-color: var(--segma-bg);
+  font-weight: 600;
+}
+
+/* Admonitions */
+.admonition {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid var(--segma-primary);
+}
+
+.admonition.note {
+  background-color: #e3f2fd;
+  border-color: var(--segma-primary);
+}
+
+.admonition.warning {
+  background-color: #fff3cd;
+  border-color: var(--segma-warning);
+}
+
+.admonition.danger {
+  background-color: #f8d7da;
+  border-color: var(--segma-error);
+}
+
+.admonition.tip {
+  background-color: #d1ecf1;
+  border-color: var(--segma-success);
+}
+
+/* Links */
+a {
+  color: var(--segma-primary) !important;
+}
+
+a:hover {
+  color: #1d4ed8 !important;
+}
+
+/* Buttons */
+.btn {
+  background-color: var(--segma-primary);
+  border-color: var(--segma-primary);
+  color: white;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0.25rem;
+}
+
+.btn:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+  color: white;
+  text-decoration: none;
+}
+
+/* API Documentation Styling */
+.http-method {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+}
+
+.http-get {
+  background-color: var(--segma-success);
+  color: white;
+}
+
+.http-post {
+  background-color: var(--segma-primary);
+  color: white;
+}
+
+.http-put {
+  background-color: var(--segma-warning);
+  color: white;
+}
+
+.http-delete {
+  background-color: var(--segma-error);
+  color: white;
+}
+
+/* Code Examples */
+.code-example {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.code-example .title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--segma-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wy-nav-content {
+    margin-left: 0;
+  }
+  
+  .wy-nav-side {
+    left: -300px;
+  }
+}
+
+/* Custom Icons */
+.icon-docker::before {
+  content: "🐳 ";
+}
+
+.icon-python::before {
+  content: "🐍 ";
+}
+
+.icon-react::before {
+  content: "⚛️ ";
+}
+
+.icon-gpu::before {
+  content: "🖥️ ";
+}
+
+.icon-warning::before {
+  content: "⚠️ ";
+}
+
+.icon-tip::before {
+  content: "💡 ";
+}
+
+.icon-info::before {
+  content: "ℹ️ ";
+}
+
+/* Step-by-step guides */
+.step {
+  counter-increment: step-counter;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-left: 4px solid var(--segma-primary);
+  background-color: #f8fafc;
+  border-radius: 0 6px 6px 0;
+}
+
+.step::before {
+  content: "Step " counter(step-counter) ": ";
+  font-weight: bold;
+  color: var(--segma-primary);
+}
+
+.steps {
+  counter-reset: step-counter;
+}
+
+/* Highlight boxes */
+.highlight-box {
+  background-color: #e0f2fe;
+  border: 1px solid #81d4fa;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.highlight-box.success {
+  background-color: #e8f5e8;
+  border-color: #4caf50;
+}
+
+.highlight-box.warning {
+  background-color: #fff8e1;
+  border-color: #ffc107;
+}
+
+.highlight-box.error {
+  background-color: #ffebee;
+  border-color: #f44336;
+}
+
+/* Footer */
+.wy-nav-content footer {
+  background-color: var(--segma-bg);
+  border-top: 1px solid #e9ecef;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+/* Search */
+.wy-side-nav-search {
+  background-color: var(--segma-primary) !important;
+}
+
+.wy-side-nav-search input[type="text"] {
+  border-radius: 6px;
+  border: none;
+  padding: 0.5rem;
+}
+
+/* Version selector */
+.wy-versions {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Print styles */
+@media print {
+  .wy-nav-side,
+  .wy-nav-top,
+  .rst-footer-buttons {
+    display: none !important;
+  }
+  
+  .wy-nav-content {
+    margin-left: 0 !important;
+  }
+}

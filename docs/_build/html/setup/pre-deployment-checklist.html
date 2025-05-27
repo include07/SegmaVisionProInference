@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pre-Deployment Checklist &mdash; SegmaVisionPro 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bd413139" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=a56c686a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="NGC Model Download Setup Guide" href="ngc-setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SegmaVisionPro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Setup &amp; Installation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="docker-setup.html">Docker Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nvidia-toolkit.html">NVIDIA Container Toolkit Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ngc-setup.html">NGC Model Download Setup Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pre-Deployment Checklist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites-verification">Prerequisites Verification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-setup">2. Docker Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-support-optional-but-recommended">3. GPU Support (Optional but Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ngc-cli-setup">4. NGC CLI Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#project-setup">Project Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-repository">1. Clone the Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-configuration">2. Environment Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#directory-structure">3. Directory Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-files">4. Model Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-files">5. Configuration Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pre-deployment-tests">Pre-Deployment Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-docker-images-optional">1. Build Docker Images (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-configuration">2. Network Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#volume-mounts">3. Volume Mounts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#final-checklist">Final Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SegmaVisionPro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Pre-Deployment Checklist</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/setup/pre-deployment-checklist.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="pre-deployment-checklist">
+<h1>Pre-Deployment Checklist<a class="headerlink" href="#pre-deployment-checklist" title="Link to this heading"></a></h1>
+<p>Before running the Docker Compose project, ensure the following steps are completed:</p>
+<section id="prerequisites-verification">
+<h2>Prerequisites Verification<a class="headerlink" href="#prerequisites-verification" title="Link to this heading"></a></h2>
+<div class="admonition-important admonition">
+<p class="admonition-title">Important</p>
+<p>Complete all setup steps before proceeding with deployment to avoid issues.</p>
+</div>
+<section id="system-requirements">
+<h3>1. System Requirements<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Operating System</strong>: Ubuntu 20.04 or later</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Memory</strong>: At least 8GB RAM (16GB recommended)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Storage</strong>: At least 20GB free space</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Network</strong>: Stable internet connection for downloads</p></li>
+</ul>
+</section>
+<section id="docker-setup">
+<h3>2. Docker Setup<a class="headerlink" href="#docker-setup" title="Link to this heading"></a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Docker Engine</strong> installed and running</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Docker Compose</strong> plugin installed</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>User permissions</strong> configured (user in docker group)</p></li>
+</ul>
+<p><strong>Verification:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>--version
+docker<span class="w"> </span>compose<span class="w"> </span>version
+docker<span class="w"> </span>run<span class="w"> </span>hello-world
+</pre></div>
+</div>
+</section>
+<section id="gpu-support-optional-but-recommended">
+<h3>3. GPU Support (Optional but Recommended)<a class="headerlink" href="#gpu-support-optional-but-recommended" title="Link to this heading"></a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>NVIDIA GPU</strong> with compatible drivers</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>NVIDIA Container Toolkit</strong> installed and configured</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>GPU access</strong> verified in Docker</p></li>
+</ul>
+<p><strong>Verification:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi
+docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span>nvidia/cuda:12.0.0-base-ubuntu20.04<span class="w"> </span>nvidia-smi
+</pre></div>
+</div>
+</section>
+<section id="ngc-cli-setup">
+<h3>4. NGC CLI Setup<a class="headerlink" href="#ngc-cli-setup" title="Link to this heading"></a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>NGC account</strong> created and verified</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>NGC CLI</strong> installed and configured</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>API key</strong> generated and configured</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Pre-trained models</strong> downloaded</p></li>
+</ul>
+<p><strong>Verification:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ngc<span class="w"> </span>--version
+ngc<span class="w"> </span>config<span class="w"> </span>current
+ls<span class="w"> </span>inference/pre_trained_models/*.pth
+</pre></div>
+</div>
+</section>
+</section>
+<section id="project-setup">
+<h2>Project Setup<a class="headerlink" href="#project-setup" title="Link to this heading"></a></h2>
+<section id="clone-the-repository">
+<h3>1. Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Link to this heading"></a></h3>
+<p>If you haven’t already, clone the SegmaVisionPro project:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-org/SegmaVisionPro.git
+<span class="nb">cd</span><span class="w"> </span>SegmaVisionPro
+</pre></div>
+</div>
+</section>
+<section id="environment-configuration">
+<h3>2. Environment Configuration<a class="headerlink" href="#environment-configuration" title="Link to this heading"></a></h3>
+<p>Check if your project requires environment variables:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Copy example environment file (if exists):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+</pre></div>
+</div>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Edit <code class="docutils literal notranslate"><span class="pre">.env</span></code> file with your specific configuration</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Verify all required environment variables are set</p></li>
+</ul>
+</section>
+<section id="directory-structure">
+<h3>3. Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading"></a></h3>
+<p>Ensure the following directories exist with proper permissions:</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <code class="docutils literal notranslate"><span class="pre">backend/uploads/</span></code> - for file uploads</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <code class="docutils literal notranslate"><span class="pre">backend/output/</span></code> - for training outputs</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <code class="docutils literal notranslate"><span class="pre">inference/pre_trained_models/</span></code> - for model files</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create directories if they don&#39;t exist</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>backend/uploads<span class="w"> </span>backend/output
+mkdir<span class="w"> </span>-p<span class="w"> </span>inference/pre_trained_models
+
+<span class="c1"># Set proper permissions</span>
+chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>backend/uploads<span class="w"> </span>backend/output
+</pre></div>
+</div>
+</section>
+<section id="model-files">
+<h3>4. Model Files<a class="headerlink" href="#model-files" title="Link to this heading"></a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Pre-trained models</strong> downloaded via NGC CLI</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Model files</strong> placed in correct directory</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>File permissions</strong> set correctly</p></li>
+</ul>
+<p><strong>Expected files:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>inference/pre_trained_models/
+├── download_models.sh
+├── grounding_dino_swin_tiny_commercial_trainable.pth
+└── mask_grounding_dino_swin_tiny_commercial_trainable.pth
+</pre></div>
+</div>
+</section>
+<section id="configuration-files">
+<h3>5. Configuration Files<a class="headerlink" href="#configuration-files" title="Link to this heading"></a></h3>
+<p>Review and update configuration files as needed:</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>docker-compose.yml</strong> - ports, volumes, environment</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>backend/requirements.txt</strong> - Python dependencies</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>frontend/package.json</strong> - Node.js dependencies</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>inference/specs/*.yaml</strong> - model training/inference configs</p></li>
+</ul>
+</section>
+</section>
+<section id="pre-deployment-tests">
+<h2>Pre-Deployment Tests<a class="headerlink" href="#pre-deployment-tests" title="Link to this heading"></a></h2>
+<section id="build-docker-images-optional">
+<h3>1. Build Docker Images (Optional)<a class="headerlink" href="#build-docker-images-optional" title="Link to this heading"></a></h3>
+<p>If your <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> requires building images locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>build
+</pre></div>
+</div>
+</section>
+<section id="network-configuration">
+<h3>2. Network Configuration<a class="headerlink" href="#network-configuration" title="Link to this heading"></a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Ports available</strong>: Check that required ports (usually 3000, 8000) are not in use</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Firewall rules</strong>: Ensure Docker can access the internet for downloads</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if ports are available</span>
+netstat<span class="w"> </span>-tuln<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;:(3000|8000|5000)&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="volume-mounts">
+<h3>3. Volume Mounts<a class="headerlink" href="#volume-mounts" title="Link to this heading"></a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Host directories exist</strong> and have proper permissions</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Docker can access</strong> mounted volumes</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>No conflicts</strong> with existing containers</p></li>
+</ul>
+</section>
+</section>
+<section id="final-checklist">
+<h2>Final Checklist<a class="headerlink" href="#final-checklist" title="Link to this heading"></a></h2>
+<p>Before running <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span></code>:</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> All prerequisites completed</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Environment variables configured</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Model files downloaded and in place</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Required directories created</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Docker and GPU access verified</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Network ports available</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Configuration files reviewed</p></li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>If you encounter issues during setup:</p>
+<ol class="arabic simple">
+<li><p><strong>Check system logs</strong>: <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-u</span> <span class="pre">docker</span></code></p></li>
+<li><p><strong>Verify permissions</strong>: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-la</span></code> on project directories</p></li>
+<li><p><strong>Test components individually</strong>: Run each service separately</p></li>
+<li><p><strong>Review documentation</strong>: Check specific setup guides for each component</p></li>
+</ol>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Once all items are checked:</p>
+<ol class="arabic simple">
+<li><p>You’re ready to deploy SegmaVisionPro!</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">up</span> <span class="pre">-d</span></code> to start all services</p></li>
+<li><p>Access the web interface at <code class="docutils literal notranslate"><span class="pre">http://localhost:3000</span></code></p></li>
+</ol>
+</section>
+<section id="getting-help">
+<h2>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading"></a></h2>
+<p>If you encounter issues:</p>
+<ul class="simple">
+<li><p>Review the troubleshooting sections in each setup guide</p></li>
+<li><p>Check the logs: <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">logs</span> <span class="pre">[service-name]</span></code></p></li>
+<li><p>Create an issue on <a class="reference external" href="https://github.com/your-org/SegmaVisionPro/issues">GitHub</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ngc-setup.html" class="btn btn-neutral float-left" title="NGC Model Download Setup Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SegmaVisionPro Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
