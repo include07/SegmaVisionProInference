@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model Download Guide &mdash; SegmaVisionPro 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bd413139" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=a56c686a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Getting Started with SegmaVisionPro" href="getting-started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SegmaVisionPro
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Setup &amp; Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/docker-setup.html">Docker Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/nvidia-toolkit.html">NVIDIA Container Toolkit Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/ngc-setup.html">NGC CLI Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/pre-deployment-checklist.html">Pre-Deployment Checklist</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Features &amp; Usage</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started with SegmaVisionPro</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Model Download Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-navigate-to-models-directory">Step 1: Navigate to Models Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-download-required-models">Step 2: Download Required Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-gets-downloaded">What Gets Downloaded</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#expected-output">Expected Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-structure-after-download">File Structure After Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ngc-authentication-issues">NGC Authentication Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download-failures">Download Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#permission-issues">Permission Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#need-help">Need Help?</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SegmaVisionPro</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Model Download Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/features/model-download.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="model-download-guide">
+<h1>Model Download Guide<a class="headerlink" href="#model-download-guide" title="Link to this heading"></a></h1>
+<p>After cloning the SegmaVisionPro repository, you need to download the required pre-trained models before starting the Docker containers. This guide will walk you through downloading the AI models using NGC CLI.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>✅ <a class="reference internal" href="getting-started.html#step-1-clone-the-repository"><span class="std std-ref">SegmaVisionPro repository cloned</span></a></p></li>
+<li><p>✅ <a class="reference internal" href="../setup/ngc-setup.html"><span class="std std-doc">NGC CLI configured</span></a></p></li>
+</ul>
+</section>
+<section id="step-1-navigate-to-models-directory">
+<h2>Step 1: Navigate to Models Directory<a class="headerlink" href="#step-1-navigate-to-models-directory" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navigate to the pre-trained models directory</span>
+<span class="nb">cd</span><span class="w"> </span>inference/pre_trained_models/
+</pre></div>
+</div>
+</section>
+<section id="step-2-download-required-models">
+<h2>Step 2: Download Required Models<a class="headerlink" href="#step-2-download-required-models" title="Link to this heading"></a></h2>
+<p>The project uses a convenient script to download both required models:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make the download script executable</span>
+chmod<span class="w"> </span>+x<span class="w"> </span>download_models.sh
+
+<span class="c1"># Run the download script</span>
+./download_models.sh
+</pre></div>
+</div>
+</section>
+<section id="what-gets-downloaded">
+<h2>What Gets Downloaded<a class="headerlink" href="#what-gets-downloaded" title="Link to this heading"></a></h2>
+<p>The script will download two essential models:</p>
+<ol class="arabic simple">
+<li><p><strong>Mask Grounding DINO</strong>: <code class="docutils literal notranslate"><span class="pre">mask_grounding_dino_swin_tiny_commercial_trainable_v1.0</span></code></p></li>
+<li><p><strong>Grounding DINO</strong>: <code class="docutils literal notranslate"><span class="pre">grounding_dino_swin_tiny_commercial_trainable_v1.0</span></code></p></li>
+</ol>
+<p>Both models will be saved as <code class="docutils literal notranslate"><span class="pre">.pth</span></code> files in the <code class="docutils literal notranslate"><span class="pre">inference/pre_trained_models/</span></code> directory.</p>
+</section>
+<section id="expected-output">
+<h2>Expected Output<a class="headerlink" href="#expected-output" title="Link to this heading"></a></h2>
+<p>When successful, you should see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Downloading Mask Grounding DINO model...
+✓ Mask Grounding DINO model saved to: /path/to/mask_grounding_dino_swin_tiny_commercial_trainable.pth
+Downloading Grounding DINO model...
+✓ Grounding DINO model saved to: /path/to/grounding_dino_swin_tiny_commercial_trainable.pth
+All downloads complete!
+</pre></div>
+</div>
+</section>
+<section id="file-structure-after-download">
+<h2>File Structure After Download<a class="headerlink" href="#file-structure-after-download" title="Link to this heading"></a></h2>
+<p>After successful download, your directory structure will look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SegmaVisionPro/
+└── inference/
+    └── pre_trained_models/
+        ├── download_models.sh
+        ├── grounding_dino_swin_tiny_commercial_trainable.pth
+        └── mask_grounding_dino_swin_tiny_commercial_trainable.pth
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="ngc-authentication-issues">
+<h3>NGC Authentication Issues<a class="headerlink" href="#ngc-authentication-issues" title="Link to this heading"></a></h3>
+<p>If you get authentication errors:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if you&#39;re logged in</span>
+ngc<span class="w"> </span>config<span class="w"> </span>current
+
+<span class="c1"># If not configured, run setup again</span>
+ngc<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span>
+</pre></div>
+</div>
+</section>
+<section id="download-failures">
+<h3>Download Failures<a class="headerlink" href="#download-failures" title="Link to this heading"></a></h3>
+<p>Common issues and solutions:</p>
+<ul class="simple">
+<li><p><strong>Network Issues</strong>: Ensure stable internet connection</p></li>
+<li><p><strong>Disk Space</strong>: Models are large (~500MB each), ensure sufficient disk space</p></li>
+<li><p><strong>Account Access</strong>: Verify your NGC account has access to TAO models</p></li>
+<li><p><strong>API Key</strong>: Double-check your API key is correct</p></li>
+</ul>
+</section>
+<section id="permission-issues">
+<h3>Permission Issues<a class="headerlink" href="#permission-issues" title="Link to this heading"></a></h3>
+<p>If you get permission errors:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure script is executable</span>
+chmod<span class="w"> </span>+x<span class="w"> </span>download_models.sh
+
+<span class="c1"># Check directory permissions</span>
+ls<span class="w"> </span>-la
+</pre></div>
+</div>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Once the models are downloaded successfully:</p>
+<ol class="arabic simple">
+<li><p>Return to the main project directory: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">../..</span></code></p></li>
+<li><p>Continue with <a class="reference internal" href="getting-started.html#step-2-start-with-docker-compose"><span class="std std-ref">Docker Compose setup</span></a></p></li>
+</ol>
+</section>
+<section id="need-help">
+<h2>Need Help?<a class="headerlink" href="#need-help" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Check the <a class="reference internal" href="../setup/ngc-setup.html"><span class="std std-doc">NGC Setup Guide</span></a> for NGC CLI configuration</p></li>
+<li><p>Visit our <a class="reference external" href="https://github.com/include07/SegmaVisionPro/issues">GitHub Issues</a> for support</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting-started.html" class="btn btn-neutral float-left" title="Getting Started with SegmaVisionPro" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SegmaVisionPro Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

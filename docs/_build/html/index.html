@@ -49,12 +49,13 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="setup/docker-setup.html">Docker Setup Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup/nvidia-toolkit.html">NVIDIA Container Toolkit Setup Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup/ngc-setup.html">NGC Model Download Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup/ngc-setup.html">NGC CLI Setup Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup/pre-deployment-checklist.html">Pre-Deployment Checklist</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Features &amp; Usage</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="features/getting-started.html">Getting Started with SegmaVisionPro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features/model-download.html">Model Download Guide</a></li>
 </ul>
 
         </div>
@@ -103,7 +104,9 @@
 <li><p><a class="reference internal" href="setup/nvidia-toolkit.html"><span class="std std-doc">Set up NVIDIA Container Toolkit</span></a> (for GPU support)</p></li>
 <li><p><a class="reference internal" href="setup/ngc-setup.html"><span class="std std-doc">Configure NGC CLI</span></a> (for model downloads)</p></li>
 <li><p>Complete the <a class="reference internal" href="setup/pre-deployment-checklist.html"><span class="std std-doc">Pre-Deployment Checklist</span></a></p></li>
-<li><p><a class="reference internal" href="features/getting-started.html"><span class="std std-doc">Clone and run the project</span></a> 🚀</p></li>
+<li><p><a class="reference internal" href="features/getting-started.html#step-1-clone-the-repository"><span class="std std-ref">Clone the repository</span></a></p></li>
+<li><p><a class="reference internal" href="features/model-download.html"><span class="std std-doc">Download AI models</span></a></p></li>
+<li><p><a class="reference internal" href="features/getting-started.html#step-3-start-with-docker-compose"><span class="std std-ref">Start with Docker Compose</span></a> 🚀</p></li>
 </ol>
 </section>
 <section id="table-of-contents">
@@ -138,18 +141,14 @@
 <li class="toctree-l2"><a class="reference internal" href="setup/nvidia-toolkit.html#additional-resources">Additional Resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="setup/ngc-setup.html">NGC Model Download Setup Guide</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="setup/ngc-setup.html">NGC CLI Setup Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#step-1-create-ngc-account">Step 1: Create NGC Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#step-2-generate-ngc-api-key">Step 2: Generate NGC API Key</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#step-3-install-ngc-cli">Step 3: Install NGC CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#step-4-configure-ngc-cli">Step 4: Configure NGC CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#step-5-verify-installation">Step 5: Verify Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#step-6-download-models">Step 6: Download Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#what-the-script-downloads">What the Script Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#troubleshooting">Troubleshooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#expected-output">Expected Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#file-structure-after-download">File Structure After Download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#next-steps">Next Steps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup/ngc-setup.html#additional-resources">Additional Resources</a></li>
 </ul>
@@ -172,15 +171,28 @@
 <li class="toctree-l1"><a class="reference internal" href="features/getting-started.html">Getting Started with SegmaVisionPro</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-1-clone-the-repository">Step 1: Clone the Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-2-start-with-docker-compose">Step 2: Start with Docker Compose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-3-verify-installation">Step 3: Verify Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-4-access-the-application">Step 4: Access the Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-5-create-your-account">Step 5: Create Your Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-6-start-using-segmavisionpro">Step 6: Start Using SegmaVisionPro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-2-download-pre-trained-models">Step 2: Download Pre-trained Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-3-start-with-docker-compose">Step 3: Start with Docker Compose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-4-verify-installation">Step 4: Verify Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-5-access-the-application">Step 5: Access the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-6-create-your-account">Step 6: Create Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#step-7-start-using-segmavisionpro">Step 7: Start Using SegmaVisionPro</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#essential-docker-compose-commands">Essential Docker Compose Commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#quick-start-summary">Quick Start Summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#troubleshooting">Troubleshooting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/getting-started.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="features/model-download.html">Model Download Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="features/model-download.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/model-download.html#step-1-navigate-to-models-directory">Step 1: Navigate to Models Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/model-download.html#step-2-download-required-models">Step 2: Download Required Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/model-download.html#what-gets-downloaded">What Gets Downloaded</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/model-download.html#expected-output">Expected Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/model-download.html#file-structure-after-download">File Structure After Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/model-download.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/model-download.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/model-download.html#need-help">Need Help?</a></li>
 </ul>
 </li>
 </ul>
@@ -189,7 +201,7 @@
 <section id="need-help">
 <h2>Need Help?<a class="headerlink" href="#need-help" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Visit our <a class="reference external" href="https://github.com/your-org/SegmaVisionPro">GitHub Repository</a></p></li>
+<li><p>Visit our <a class="reference external" href="https://github.com/include07/SegmaVisionPro">GitHub Repository</a></p></li>
 <li><p>Check the individual setup guides for troubleshooting tips</p></li>
 </ul>
 </section>

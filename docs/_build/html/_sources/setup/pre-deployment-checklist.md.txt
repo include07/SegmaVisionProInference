@@ -61,7 +61,7 @@ ls inference/pre_trained_models/*.pth
 If you haven't already, clone the SegmaVisionPro project:
 
 ```bash
-git clone https://github.com/your-org/SegmaVisionPro.git
+git clone https://github.com/include07/SegmaVisionPro.git
 cd SegmaVisionPro
 ```
 
@@ -177,4 +177,4 @@ If you encounter issues:
 
 - Review the troubleshooting sections in each setup guide
 - Check the logs: `docker-compose logs [service-name]`
-- Create an issue on [GitHub](https://github.com/your-org/SegmaVisionPro/issues)
+- Create an issue on [GitHub](https://github.com/include07/SegmaVisionPro/issues)

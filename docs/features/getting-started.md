@@ -17,7 +17,7 @@ Clone the SegmaVisionPro repository to your local machine:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/SegmaVisionPro.git
+git clone https://github.com/include07/SegmaVisionPro.git
 
 # Navigate to the project directory
 cd SegmaVisionPro
@@ -27,11 +27,28 @@ cd SegmaVisionPro
 
 If you prefer not to use Git:
 
-1. Visit the [SegmaVisionPro GitHub repository](https://github.com/your-org/SegmaVisionPro)
+1. Visit the [SegmaVisionPro GitHub repository](https://github.com/include07/SegmaVisionPro)
 2. Click the green "Code" button → "Download ZIP"
 3. Extract the ZIP file to your desired location
 
-## Step 2: Start with Docker Compose
+## Step 2: Download Pre-trained Models
+
+Before starting the Docker containers, you need to download the required AI models:
+
+```bash
+# Navigate to the models directory
+cd inference/pre_trained_models/
+
+# Make the download script executable and run it
+chmod +x download_models.sh && ./download_models.sh
+
+# Return to the main project directory
+cd ../..
+```
+
+For detailed instructions and troubleshooting, see the [Model Download Guide](model-download.md).
+
+## Step 3: Start with Docker Compose
 
 SegmaVisionPro comes with pre-configured environment settings that work out-of-the-box. Simply start the application using Docker Compose:
 
@@ -45,7 +62,7 @@ This will start all the required services:
 - **Frontend** (React) on port 3000
 - **Database** (PostgreSQL) for data storage
 
-## Step 3: Verify Installation
+## Step 4: Verify Installation
 
 Check that all services are running:
 
@@ -63,7 +80,7 @@ segmavision_frontend    npm start                        Up      0.0.0.0:3000->3
 segmavision_db         docker-entrypoint.sh postgres    Up      0.0.0.0:5432->5432/tcp
 ```
 
-## Step 4: Access the Application
+## Step 5: Access the Application
 
 Open your web browser and navigate to:
 
@@ -71,7 +88,7 @@ Open your web browser and navigate to:
 
 You should see the SegmaVisionPro login page.
 
-## Step 5: Create Your Account
+## Step 6: Create Your Account
 
 1. **Click "Register"** on the login page
 2. **Fill in your details**:
@@ -82,7 +99,7 @@ You should see the SegmaVisionPro login page.
 3. **Click "Register"** to create your account
 4. **Login** with your new credentials
 
-## Step 6: Start Using SegmaVisionPro
+## Step 7: Start Using SegmaVisionPro
 
 Once logged in, you have two main options:
 
@@ -163,11 +180,12 @@ docker-compose logs -f frontend
 
 The streamlined workflow is:
 
-1. **Clone** → `git clone https://github.com/your-org/SegmaVisionPro.git`
-2. **Start** → `cd SegmaVisionPro && docker-compose up -d`
-3. **Register** → Visit http://localhost:3000 and create account
-4. **Login** → Use your credentials to access the platform
-5. **Use** → Start with inference or upload datasets for training
+1. **Clone** → `git clone https://github.com/include07/SegmaVisionPro.git`
+2. **Download Models** → `cd inference/pre_trained_models && ./download_models.sh`
+3. **Start** → `cd ../.. && docker-compose up -d`
+4. **Register** → Visit http://localhost:3000 and create account
+5. **Login** → Use your credentials to access the platform
+6. **Use** → Start with inference or upload datasets for training
 
 ## Troubleshooting
 
@@ -211,7 +229,7 @@ If you encounter issues:
 
 - Check the troubleshooting sections in the individual setup guides
 - Review container logs: `docker-compose logs [service-name]`
-- Visit our [GitHub Issues](https://github.com/your-org/SegmaVisionPro/issues)
+- Visit our [GitHub Issues](https://github.com/include07/SegmaVisionPro/issues)
 - Check the [API documentation](http://localhost:8000/docs) when running
 
 Happy coding with SegmaVisionPro! 🚀

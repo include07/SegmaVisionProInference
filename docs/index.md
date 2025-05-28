@@ -1,6 +1,6 @@
 # SegmaVisionPro Documentation
 
-Welcome to SegmaVisionPro, a comprehensive computer vision platform for training and deploying advanced AI models.
+Welcome to SegmaVisionPro, a comprehensive computer vision platform for training and deploying advanced AI models for the indusry.
 
 ## Overview
 
@@ -20,7 +20,9 @@ Get up and running with SegmaVisionPro in minutes:
 2. [Set up NVIDIA Container Toolkit](setup/nvidia-toolkit.md) (for GPU support)
 3. [Configure NGC CLI](setup/ngc-setup.md) (for model downloads)
 4. Complete the [Pre-Deployment Checklist](setup/pre-deployment-checklist.md)
-5. [Clone and run the project](features/getting-started.md) 🚀
+5. [Clone the repository](features/getting-started.md#step-1-clone-the-repository)
+6. [Download AI models](features/model-download.md)
+7. [Start with Docker Compose](features/getting-started.md#step-3-start-with-docker-compose) 🚀
 
 ## Table of Contents
 
@@ -39,11 +41,12 @@ setup/pre-deployment-checklist
 :caption: Features & Usage
 
 features/getting-started
+features/model-download
 ```
 
 ## Need Help?
 
-- Visit our [GitHub Repository](https://github.com/your-org/SegmaVisionPro)
+- Visit our [GitHub Repository](https://github.com/include07/SegmaVisionPro)
 - Check the individual setup guides for troubleshooting tips
 
 ## License

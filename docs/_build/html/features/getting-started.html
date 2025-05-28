@@ -23,6 +23,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Model Download Guide" href="model-download.html" />
     <link rel="prev" title="Pre-Deployment Checklist" href="../setup/pre-deployment-checklist.html" /> 
 </head>
 
@@ -49,7 +50,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../setup/docker-setup.html">Docker Setup Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../setup/nvidia-toolkit.html">NVIDIA Container Toolkit Setup Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../setup/ngc-setup.html">NGC Model Download Setup Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/ngc-setup.html">NGC CLI Setup Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../setup/pre-deployment-checklist.html">Pre-Deployment Checklist</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Features &amp; Usage</span></p>
@@ -60,11 +61,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#alternative-download-as-zip">Alternative: Download as ZIP</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#step-2-start-with-docker-compose">Step 2: Start with Docker Compose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-3-verify-installation">Step 3: Verify Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-4-access-the-application">Step 4: Access the Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-5-create-your-account">Step 5: Create Your Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-6-start-using-segmavisionpro">Step 6: Start Using SegmaVisionPro</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-download-pre-trained-models">Step 2: Download Pre-trained Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-start-with-docker-compose">Step 3: Start with Docker Compose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-verify-installation">Step 4: Verify Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-5-access-the-application">Step 5: Access the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-6-create-your-account">Step 6: Create Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-7-start-using-segmavisionpro">Step 7: Start Using SegmaVisionPro</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#option-a-quick-inference-recommended-for-first-time-users">Option A: Quick Inference (Recommended for first-time users)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-b-dataset-upload-and-fine-tuning">Option B: Dataset Upload and Fine-tuning</a></li>
 </ul>
@@ -83,6 +85,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="model-download.html">Model Download Guide</a></li>
 </ul>
 
         </div>
@@ -126,7 +129,7 @@
 <h2>Step 1: Clone the Repository<a class="headerlink" href="#step-1-clone-the-repository" title="Link to this heading"></a></h2>
 <p>Clone the SegmaVisionPro repository to your local machine:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone the repository</span>
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-org/SegmaVisionPro.git
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/include07/SegmaVisionPro.git
 
 <span class="c1"># Navigate to the project directory</span>
 <span class="nb">cd</span><span class="w"> </span>SegmaVisionPro
@@ -136,14 +139,29 @@ git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-
 <h3>Alternative: Download as ZIP<a class="headerlink" href="#alternative-download-as-zip" title="Link to this heading"></a></h3>
 <p>If you prefer not to use Git:</p>
 <ol class="arabic simple">
-<li><p>Visit the <a class="reference external" href="https://github.com/your-org/SegmaVisionPro">SegmaVisionPro GitHub repository</a></p></li>
+<li><p>Visit the <a class="reference external" href="https://github.com/include07/SegmaVisionPro">SegmaVisionPro GitHub repository</a></p></li>
 <li><p>Click the green “Code” button → “Download ZIP”</p></li>
 <li><p>Extract the ZIP file to your desired location</p></li>
 </ol>
 </section>
 </section>
-<section id="step-2-start-with-docker-compose">
-<h2>Step 2: Start with Docker Compose<a class="headerlink" href="#step-2-start-with-docker-compose" title="Link to this heading"></a></h2>
+<section id="step-2-download-pre-trained-models">
+<h2>Step 2: Download Pre-trained Models<a class="headerlink" href="#step-2-download-pre-trained-models" title="Link to this heading"></a></h2>
+<p>Before starting the Docker containers, you need to download the required AI models:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navigate to the models directory</span>
+<span class="nb">cd</span><span class="w"> </span>inference/pre_trained_models/
+
+<span class="c1"># Make the download script executable and run it</span>
+chmod<span class="w"> </span>+x<span class="w"> </span>download_models.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./download_models.sh
+
+<span class="c1"># Return to the main project directory</span>
+<span class="nb">cd</span><span class="w"> </span>../..
+</pre></div>
+</div>
+<p>For detailed instructions and troubleshooting, see the <a class="reference internal" href="model-download.html"><span class="std std-doc">Model Download Guide</span></a>.</p>
+</section>
+<section id="step-3-start-with-docker-compose">
+<h2>Step 3: Start with Docker Compose<a class="headerlink" href="#step-3-start-with-docker-compose" title="Link to this heading"></a></h2>
 <p>SegmaVisionPro comes with pre-configured environment settings that work out-of-the-box. Simply start the application using Docker Compose:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start all services in detached mode</span>
 docker-compose<span class="w"> </span>up<span class="w"> </span>-d
@@ -156,8 +174,8 @@ docker-compose<span class="w"> </span>up<span class="w"> </span>-d
 <li><p><strong>Database</strong> (PostgreSQL) for data storage</p></li>
 </ul>
 </section>
-<section id="step-3-verify-installation">
-<h2>Step 3: Verify Installation<a class="headerlink" href="#step-3-verify-installation" title="Link to this heading"></a></h2>
+<section id="step-4-verify-installation">
+<h2>Step 4: Verify Installation<a class="headerlink" href="#step-4-verify-installation" title="Link to this heading"></a></h2>
 <p>Check that all services are running:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check running containers</span>
 docker-compose<span class="w"> </span>ps
@@ -172,14 +190,14 @@ docker-compose<span class="w"> </span>ps
 </pre></div>
 </div>
 </section>
-<section id="step-4-access-the-application">
-<h2>Step 4: Access the Application<a class="headerlink" href="#step-4-access-the-application" title="Link to this heading"></a></h2>
+<section id="step-5-access-the-application">
+<h2>Step 5: Access the Application<a class="headerlink" href="#step-5-access-the-application" title="Link to this heading"></a></h2>
 <p>Open your web browser and navigate to:</p>
 <p><strong>Frontend</strong>: <a class="reference external" href="http://localhost:3000">http://localhost:3000</a></p>
 <p>You should see the SegmaVisionPro login page.</p>
 </section>
-<section id="step-5-create-your-account">
-<h2>Step 5: Create Your Account<a class="headerlink" href="#step-5-create-your-account" title="Link to this heading"></a></h2>
+<section id="step-6-create-your-account">
+<h2>Step 6: Create Your Account<a class="headerlink" href="#step-6-create-your-account" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p><strong>Click “Register”</strong> on the login page</p></li>
 <li><p><strong>Fill in your details</strong>:</p>
@@ -194,8 +212,8 @@ docker-compose<span class="w"> </span>ps
 <li><p><strong>Login</strong> with your new credentials</p></li>
 </ol>
 </section>
-<section id="step-6-start-using-segmavisionpro">
-<h2>Step 6: Start Using SegmaVisionPro<a class="headerlink" href="#step-6-start-using-segmavisionpro" title="Link to this heading"></a></h2>
+<section id="step-7-start-using-segmavisionpro">
+<h2>Step 7: Start Using SegmaVisionPro<a class="headerlink" href="#step-7-start-using-segmavisionpro" title="Link to this heading"></a></h2>
 <p>Once logged in, you have two main options:</p>
 <section id="option-a-quick-inference-recommended-for-first-time-users">
 <h3>Option A: Quick Inference (Recommended for first-time users)<a class="headerlink" href="#option-a-quick-inference-recommended-for-first-time-users" title="Link to this heading"></a></h3>
@@ -287,8 +305,9 @@ docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class=
 <h2>Quick Start Summary<a class="headerlink" href="#quick-start-summary" title="Link to this heading"></a></h2>
 <p>The streamlined workflow is:</p>
 <ol class="arabic simple">
-<li><p><strong>Clone</strong> → <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/your-org/SegmaVisionPro.git</span></code></p></li>
-<li><p><strong>Start</strong> → <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">SegmaVisionPro</span> <span class="pre">&amp;&amp;</span> <span class="pre">docker-compose</span> <span class="pre">up</span> <span class="pre">-d</span></code></p></li>
+<li><p><strong>Clone</strong> → <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/include07/SegmaVisionPro.git</span></code></p></li>
+<li><p><strong>Download Models</strong> → <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">inference/pre_trained_models</span> <span class="pre">&amp;&amp;</span> <span class="pre">./download_models.sh</span></code></p></li>
+<li><p><strong>Start</strong> → <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">../..</span> <span class="pre">&amp;&amp;</span> <span class="pre">docker-compose</span> <span class="pre">up</span> <span class="pre">-d</span></code></p></li>
 <li><p><strong>Register</strong> → Visit <a class="reference external" href="http://localhost:3000">http://localhost:3000</a> and create account</p></li>
 <li><p><strong>Login</strong> → Use your credentials to access the platform</p></li>
 <li><p><strong>Use</strong> → Start with inference or upload datasets for training</p></li>
@@ -343,7 +362,7 @@ docker-compose<span class="w"> </span>logs<span class="w"> </span>frontend
 <ul class="simple">
 <li><p>Check the troubleshooting sections in the individual setup guides</p></li>
 <li><p>Review container logs: <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">logs</span> <span class="pre">[service-name]</span></code></p></li>
-<li><p>Visit our <a class="reference external" href="https://github.com/your-org/SegmaVisionPro/issues">GitHub Issues</a></p></li>
+<li><p>Visit our <a class="reference external" href="https://github.com/include07/SegmaVisionPro/issues">GitHub Issues</a></p></li>
 <li><p>Check the <a class="reference external" href="http://localhost:8000/docs">API documentation</a> when running</p></li>
 </ul>
 <p>Happy coding with SegmaVisionPro! 🚀</p>
@@ -355,6 +374,7 @@ docker-compose<span class="w"> </span>logs<span class="w"> </span>frontend
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../setup/pre-deployment-checklist.html" class="btn btn-neutral float-left" title="Pre-Deployment Checklist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="model-download.html" class="btn btn-neutral float-right" title="Model Download Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NGC Model Download Setup Guide &mdash; SegmaVisionPro 1.0.0 documentation</title>
+  <title>NGC CLI Setup Guide &mdash; SegmaVisionPro 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -50,7 +50,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="docker-setup.html">Docker Setup Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nvidia-toolkit.html">NVIDIA Container Toolkit Setup Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">NGC Model Download Setup Guide</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">NGC CLI Setup Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-1-create-ngc-account">Step 1: Create NGC Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-2-generate-ngc-api-key">Step 2: Generate NGC API Key</a></li>
@@ -61,16 +61,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#step-4-configure-ngc-cli">Step 4: Configure NGC CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#step-5-verify-installation">Step 5: Verify Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-6-download-models">Step 6: Download Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#what-the-script-downloads">What the Script Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ngc-cli-not-found">NGC CLI Not Found</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authentication-issues">Authentication Issues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#download-failures">Download Failures</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#expected-output">Expected Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#file-structure-after-download">File Structure After Download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
 </ul>
@@ -80,6 +75,7 @@
 <p class="caption" role="heading"><span class="caption-text">Features &amp; Usage</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../features/getting-started.html">Getting Started with SegmaVisionPro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/model-download.html">Model Download Guide</a></li>
 </ul>
 
         </div>
@@ -96,7 +92,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">NGC Model Download Setup Guide</li>
+      <li class="breadcrumb-item active">NGC CLI Setup Guide</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/setup/ngc-setup.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -106,9 +102,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section class="tex2jax_ignore mathjax_ignore" id="ngc-model-download-setup-guide">
-<h1>NGC Model Download Setup Guide<a class="headerlink" href="#ngc-model-download-setup-guide" title="Link to this heading"></a></h1>
-<p>This guide will help you set up NGC CLI and download the required pre-trained models for the Mask Grounding DINO project.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="ngc-cli-setup-guide">
+<h1>NGC CLI Setup Guide<a class="headerlink" href="#ngc-cli-setup-guide" title="Link to this heading"></a></h1>
+<p>This guide will help you set up NVIDIA NGC CLI for downloading pre-trained models. NGC CLI is required for accessing NVIDIA’s model registry.</p>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
 <ul class="simple">
@@ -190,35 +186,6 @@ ngc<span class="w"> </span>config<span class="w"> </span>current
 </div>
 <p>You should see your configuration details without errors.</p>
 </section>
-<section id="step-6-download-models">
-<h2>Step 6: Download Models<a class="headerlink" href="#step-6-download-models" title="Link to this heading"></a></h2>
-<ol class="arabic">
-<li><p><strong>Navigate to the project directory:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/SegmaVisionPro/inference/pre_trained_models/
-</pre></div>
-</div>
-</li>
-<li><p><strong>Make the download script executable:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>download_models.sh
-</pre></div>
-</div>
-</li>
-<li><p><strong>Run the download script:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./download_models.sh
-</pre></div>
-</div>
-</li>
-</ol>
-</section>
-<section id="what-the-script-downloads">
-<h2>What the Script Downloads<a class="headerlink" href="#what-the-script-downloads" title="Link to this heading"></a></h2>
-<p>The script will download two models:</p>
-<ol class="arabic simple">
-<li><p><strong>Mask Grounding DINO</strong>: <code class="docutils literal notranslate"><span class="pre">mask_grounding_dino_swin_tiny_commercial_trainable_v1.0</span></code></p></li>
-<li><p><strong>Grounding DINO</strong>: <code class="docutils literal notranslate"><span class="pre">grounding_dino_swin_tiny_commercial_trainable_v1.0</span></code></p></li>
-</ol>
-<p>Both models will be saved as <code class="docutils literal notranslate"><span class="pre">.pth</span></code> files in the same directory as the script.</p>
-</section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
 <section id="ngc-cli-not-found">
@@ -250,36 +217,15 @@ ngc<span class="w"> </span>config<span class="w"> </span>current
 </pre></div>
 </div>
 </section>
-<section id="download-failures">
-<h3>Download Failures<a class="headerlink" href="#download-failures" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>Ensure stable internet connection</p></li>
-<li><p>Check if your NGC account has access to TAO models</p></li>
-<li><p>Verify API key is correct</p></li>
-</ul>
-</section>
-</section>
-<section id="expected-output">
-<h2>Expected Output<a class="headerlink" href="#expected-output" title="Link to this heading"></a></h2>
-<p>When successful, you should see:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>✓ Mask Grounding DINO model saved to: /path/to/grounding_dino_swin_tiny_commercial_trainable.pth
-✓ Grounding DINO model saved to: /path/to/grounding_dino_swin_tiny_commercial_trainable.pth
-All downloads complete!
-</pre></div>
-</div>
-</section>
-<section id="file-structure-after-download">
-<h2>File Structure After Download<a class="headerlink" href="#file-structure-after-download" title="Link to this heading"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pre_trained_models/
-├── download_models.sh
-├── grounding_dino_swin_tiny_commercial_trainable.pth
-└── mask_grounding_dino_swin_tiny_commercial_trainable.pth
-</pre></div>
-</div>
 </section>
 <section id="next-steps">
 <h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
-<p>After successful download, you can use these models in your training configuration by updating the <code class="docutils literal notranslate"><span class="pre">pretrained_model_path</span></code> in your <code class="docutils literal notranslate"><span class="pre">train.yaml</span></code> file to point to the downloaded models.</p>
+<p>After successful NGC CLI setup:</p>
+<ol class="arabic simple">
+<li><p><strong>Continue with the getting started guide</strong> to clone the repository</p></li>
+<li><p><strong>Use the model download guide</strong> to download required AI models</p></li>
+<li><p><strong>Start the application</strong> with Docker Compose</p></li>
+</ol>
 </section>
 <section id="additional-resources">
 <h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading"></a></h2>

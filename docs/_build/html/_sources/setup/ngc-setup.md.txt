@@ -1,6 +1,6 @@
-# NGC Model Download Setup Guide
+# NGC CLI Setup Guide
 
-This guide will help you set up NGC CLI and download the required pre-trained models for the Mask Grounding DINO project.
+This guide will help you set up NVIDIA NGC CLI for downloading pre-trained models. NGC CLI is required for accessing NVIDIA's model registry.
 
 ## Prerequisites
 
@@ -75,32 +75,6 @@ ngc config current
 
 You should see your configuration details without errors.
 
-## Step 6: Download Models
-
-1. **Navigate to the project directory:**
-   ```bash
-   cd /path/to/SegmaVisionPro/inference/pre_trained_models/
-   ```
-
-2. **Make the download script executable:**
-   ```bash
-   chmod +x download_models.sh
-   ```
-
-3. **Run the download script:**
-   ```bash
-   ./download_models.sh
-   ```
-
-## What the Script Downloads
-
-The script will download two models:
-
-1. **Mask Grounding DINO**: `mask_grounding_dino_swin_tiny_commercial_trainable_v1.0`
-2. **Grounding DINO**: `grounding_dino_swin_tiny_commercial_trainable_v1.0`
-
-Both models will be saved as `.pth` files in the same directory as the script.
-
 ## Troubleshooting
 
 ### NGC CLI Not Found
@@ -129,33 +103,13 @@ ngc config set
 ngc config current
 ```
 
-### Download Failures
-
-- Ensure stable internet connection
-- Check if your NGC account has access to TAO models
-- Verify API key is correct
-
-## Expected Output
-
-When successful, you should see:
-```
-✓ Mask Grounding DINO model saved to: /path/to/grounding_dino_swin_tiny_commercial_trainable.pth
-✓ Grounding DINO model saved to: /path/to/grounding_dino_swin_tiny_commercial_trainable.pth
-All downloads complete!
-```
-
-## File Structure After Download
-
-```
-pre_trained_models/
-├── download_models.sh
-├── grounding_dino_swin_tiny_commercial_trainable.pth
-└── mask_grounding_dino_swin_tiny_commercial_trainable.pth
-```
-
 ## Next Steps
 
-After successful download, you can use these models in your training configuration by updating the `pretrained_model_path` in your `train.yaml` file to point to the downloaded models.
+After successful NGC CLI setup:
+
+1. **Continue with the getting started guide** to clone the repository
+2. **Use the model download guide** to download required AI models
+3. **Start the application** with Docker Compose
 
 ## Additional Resources
 
