@@ -21,8 +21,7 @@ dist/
 # Docker
 db_data/
 
-# Environment variables
-.env
+.venv/
 
 # IDE/Editor specific
 .vscode/
