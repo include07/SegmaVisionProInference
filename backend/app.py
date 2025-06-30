@@ -190,6 +190,11 @@ def upload_and_process_image():
     file = request.files['image']
     keywords_str = request.form.get('keywords', '')
     color_map_json_str = request.form.get('color_map', '{}')
+    
+    # Check for custom model parameters
+    use_custom_model = request.form.get('use_custom_model', '').lower() == 'true'
+    custom_model_path = request.form.get('custom_model_path', '')
+    dataset_id = request.form.get('dataset_id', '')
     if file.filename == '': return jsonify({"message": "No image selected"}), 400
     if not allowed_file(file.filename): return jsonify({"message": "File type not allowed"}), 400
     if not keywords_str.strip(): return jsonify({"message": "Keywords/Captions cannot be empty"}), 400
@@ -211,7 +216,17 @@ def upload_and_process_image():
     relative_output_path = os.path.join(output_subdir, output_filename)
     filepath_output_img_backend = os.path.join(app.config['OUTPUT_FOLDER'], relative_output_path)
     shared_yaml_path_inference = "/specs/infer.yaml"
-    checkpoint_path_inference = "/pre_trained_models/model_epoch_049.pth"
+    
+    # Determine which model to use
+    if use_custom_model and custom_model_path and dataset_id == user.username:
+        # Use custom trained model
+        checkpoint_path_inference = f"/results/finetune/train/{custom_model_path}"
+        app.logger.info(f"Using custom model: {checkpoint_path_inference}")
+    else:
+        # Use default pre-trained model
+        checkpoint_path_inference = "/pre_trained_models/model_epoch_049.pth"
+        app.logger.info(f"Using default model: {checkpoint_path_inference}")
+    
     app.logger.info(f"Input image path (backend): {filepath_input_img_backend}")
     app.logger.info(f"Expecting output file at (backend): {filepath_output_img_backend}")
 
@@ -557,28 +572,146 @@ def finetune_upload():
 @jwt_required()
 def get_finetune_status(dataset_id):
     """
-    Get the status of a fine-tuning process
+    Get the status of a fine-tuning process by checking the output directory
     """
     current_user_username = get_jwt_identity()
     user = db.session.scalar(db.select(User).filter_by(username=current_user_username))
     
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+    
+    # For this implementation, dataset_id should be the username
+    if dataset_id != user.username:
+        return jsonify({'error': 'Unauthorized access to dataset status'}), 403
+    
     try:
-        user_id = dataset_id.split('_')[0]
-        if str(user.id) != user_id:
-            return jsonify({'error': 'Unauthorized access to dataset status'}), 403
-            
-        # TODO: Implement actual status checking
-        # For now, return a mock status
+        # Check the training output directory for status
+        training_output_dir = os.path.join(app.config['OUTPUT_FOLDER'], 'finetune', 'train')
+        
+        app.logger.info(f"Checking training status in: {training_output_dir}")
+        
+        # Check if the directory exists
+        if not os.path.exists(training_output_dir):
+            return jsonify({
+                'dataset_id': dataset_id,
+                'status': 'pending',
+                'progress': 0,
+                'message': 'Training not yet started'
+            }), 200
+        
+        # Look for model files and status
+        model_files = []
+        status_file = os.path.join(training_output_dir, 'status.json')
+        
+        # Find model epoch files
+        for file in os.listdir(training_output_dir):
+            if file.startswith('model_epoch_') and file.endswith('.pth'):
+                model_files.append(file)
+        
+        model_files.sort()  # Sort to get the latest epoch
+        
+        # Check for status.json file (if TAO creates one)
+        training_status = 'processing'
+        progress = 0
+        message = 'Training in progress...'
+        
+        if os.path.exists(status_file):
+            try:
+                with open(status_file, 'r') as f:
+                    status_data = json.load(f)
+                    training_status = status_data.get('status', 'processing')
+                    progress = status_data.get('progress', 0)
+                    message = status_data.get('message', 'Training in progress...')
+            except (json.JSONDecodeError, FileNotFoundError):
+                app.logger.warning(f"Could not read status file: {status_file}")
+        
+        # If we have model files, assume training is progressing or complete
+        if model_files:
+            latest_model = model_files[-1]
+            # Extract epoch number to estimate progress
+            try:
+                epoch_str = latest_model.split('_')[-1].split('.')[0]
+                current_epoch = int(epoch_str)
+                # Assuming 2 epochs max (from train.yaml), calculate progress
+                max_epochs = 2  # This should match the num_epochs in train.yaml
+                progress = min((current_epoch + 1) * 100 // max_epochs, 100)
+                
+                if progress >= 100:
+                    training_status = 'completed'
+                    message = f'Training completed successfully! Latest model: {latest_model}'
+                else:
+                    message = f'Training epoch {current_epoch} completed. Latest model: {latest_model}'
+                    
+            except (ValueError, IndexError):
+                app.logger.warning(f"Could not parse epoch from model file: {latest_model}")
+        
         return jsonify({
             'dataset_id': dataset_id,
-            'status': 'pending',
-            'progress': 0,
-            'message': 'Fine-tuning process queued'
+            'status': training_status,
+            'progress': progress,
+            'message': message,
+            'model_path': model_files[-1] if model_files else None,
+            'available_models': model_files
         }), 200
         
     except Exception as e:
-        app.logger.error(f"Error checking fine-tune status: {str(e)}")
+        app.logger.error(f"Error checking fine-tune status: {str(e)}", exc_info=True)
         return jsonify({'error': 'Error checking fine-tune status'}), 500
+
+
+@app.route('/api/finetune/download/<dataset_id>', methods=['GET'])
+@jwt_required()
+def download_trained_model(dataset_id):
+    """
+    Download the latest trained model for a user
+    """
+    current_user_username = get_jwt_identity()
+    user = db.session.scalar(db.select(User).filter_by(username=current_user_username))
+    
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+    
+    # For this implementation, dataset_id should be the username
+    if dataset_id != user.username:
+        return jsonify({'error': 'Unauthorized access to model'}), 403
+    
+    try:
+        # Look for the latest trained model
+        training_output_dir = os.path.join(app.config['OUTPUT_FOLDER'], 'finetune', 'train')
+        
+        if not os.path.exists(training_output_dir):
+            return jsonify({'error': 'No trained models found'}), 404
+        
+        # Find all model files
+        model_files = []
+        for file in os.listdir(training_output_dir):
+            if file.startswith('model_epoch_') and file.endswith('.pth'):
+                model_files.append(file)
+        
+        if not model_files:
+            return jsonify({'error': 'No trained model files found'}), 404
+        
+        # Get the latest model (highest epoch number)
+        model_files.sort()
+        latest_model = model_files[-1]
+        model_path = os.path.join(training_output_dir, latest_model)
+        
+        if not os.path.exists(model_path):
+            return jsonify({'error': 'Model file not found'}), 404
+        
+        app.logger.info(f"Serving trained model download: {model_path}")
+        
+        # Send the model file
+        return send_file(
+            model_path,
+            as_attachment=True,
+            download_name=f"{user.username}_{latest_model}",
+            mimetype='application/octet-stream'
+        )
+        
+    except Exception as e:
+        app.logger.error(f"Error downloading model: {str(e)}", exc_info=True)
+        return jsonify({'error': 'Error downloading model'}), 500
 
 
 # --- Other Routes (/api/results, /api/health, /api/register, /api/login, /api/protected) ---

@@ -29,9 +29,24 @@ function ImageUploadForm() {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [resultImageUrl, setResultImageUrl] = useState(null); // Will hold Object URL
+  const [selectedModel, setSelectedModel] = useState('default'); // 'default' or 'custom'
+  const [customModel, setCustomModel] = useState(null); // Stores custom model info from localStorage
 
-  // --- Add useEffect for Object URL cleanup ---
+  // --- Add useEffect for Object URL cleanup and checking for custom model ---
   useEffect(() => {
+      // Check if there's a custom trained model available
+      const trainedModelData = localStorage.getItem('trainedModel');
+      if (trainedModelData) {
+          try {
+              const modelInfo = JSON.parse(trainedModelData);
+              setCustomModel(modelInfo);
+              setMessage(`Custom trained model available: ${modelInfo.modelPath}`);
+          } catch (e) {
+              console.error('Error parsing trained model data:', e);
+              localStorage.removeItem('trainedModel'); // Clean up invalid data
+          }
+      }
+      
       // This function runs when the component unmounts or before the effect runs again
       return () => {
           if (resultImageUrl && resultImageUrl.startsWith('blob:')) {
@@ -59,6 +74,10 @@ function ImageUploadForm() {
 
   const handleKeywordsChange = (event) => { setKeywords(event.target.value); };
   const handleColorMapChange = (event) => { setColorMap(event.target.value); };
+  const handleModelChange = (event) => { 
+      setSelectedModel(event.target.value);
+      setMessage(''); // Clear any previous messages
+  };
 
   const handleSubmit = async (event) => {
       event.preventDefault();
@@ -83,8 +102,21 @@ function ImageUploadForm() {
       setMessage('Uploading and processing...');
 
       try {
+          // Prepare model information for the backend
+          let modelInfo = {};
+          if (selectedModel === 'custom' && customModel) {
+              modelInfo = {
+                  useCustomModel: true,
+                  modelPath: customModel.modelPath,
+                  datasetId: customModel.datasetId
+              };
+              setMessage('Uploading and processing with your custom trained model...');
+          } else {
+              setMessage('Uploading and processing with default pre-trained model...');
+          }
+
           // Call the upload service function - it now returns a Blob on success
-          const responseBlob = await authService.uploadImage(file, keywords, colorMap); // Call as a method
+          const responseBlob = await authService.uploadImage(file, keywords, colorMap, modelInfo); // Pass model info
 
           // --- Handle Blob Response ---
           if (responseBlob instanceof Blob && responseBlob.size > 0) {
@@ -138,6 +170,29 @@ function ImageUploadForm() {
               <div className="form-group">
                   <label htmlFor="image-upload">Select Image:</label>
                   <input type="file" id="image-upload" accept="image/png, image/jpeg, image/gif" onChange={handleFileChange} disabled={isLoading} />
+              </div>
+              
+              {/* Model Selection */}
+              <div className="form-group">
+                  <label htmlFor="model-selection">Select Model:</label>
+                  <select id="model-selection" value={selectedModel} onChange={handleModelChange} disabled={isLoading}>
+                      <option value="default">Default Pre-trained Model</option>
+                      {customModel && (
+                          <option value="custom">
+                              Custom Trained Model ({customModel.modelPath})
+                          </option>
+                      )}
+                  </select>
+                  {!customModel && (
+                      <small style={{ color: '#888', display: 'block', marginTop: '5px' }}>
+                          Train a custom model in the Fine-tune section to see it here.
+                      </small>
+                  )}
+                  {customModel && selectedModel === 'custom' && (
+                      <small style={{ color: 'var(--accent-color-primary)', display: 'block', marginTop: '5px' }}>
+                          Using your trained model: {customModel.modelPath}
+                      </small>
+                  )}
               </div>
               {/* Keywords Input */}
               <div className="form-group">

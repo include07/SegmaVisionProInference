@@ -54,11 +54,18 @@ const getProtectedData = async () => {
     }
 };
 
-const uploadImage = async (file, keywords, colorMapJson) => {
+const uploadImage = async (file, keywords, colorMapJson, modelInfo = {}) => {
     const formData = new FormData();
     formData.append('image', file);
     formData.append('keywords', keywords);
     formData.append('color_map', colorMapJson);
+    
+    // Add model information if provided
+    if (modelInfo.useCustomModel) {
+        formData.append('use_custom_model', 'true');
+        formData.append('custom_model_path', modelInfo.modelPath || '');
+        formData.append('dataset_id', modelInfo.datasetId || '');
+    }
 
     try {
         // Use 'api' instance - Interceptor adds Auth header and handles Content-Type for FormData

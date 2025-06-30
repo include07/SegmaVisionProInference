@@ -500,3 +500,195 @@ button[type="submit"]:active {
     left: 0;
     font-weight: bold;
 }
+
+/* Fine-tuning Progress Styles */
+.progress-container {
+    margin: 20px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: var(--bg-color-dark);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color-primary), #00a0a0);
+    border-radius: inherit;
+    transition: width 0.3s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.progress-text {
+    text-align: center;
+    margin-top: 8px;
+    color: var(--text-color-secondary);
+    font-size: 0.9rem;
+}
+
+/* Post-training Action Styles */
+.post-training-actions {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: rgba(0, 240, 240, 0.05);
+    border: 2px solid var(--accent-color-primary);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.post-training-actions h3 {
+    margin-top: 0;
+    color: var(--accent-color-primary);
+    text-shadow: 0 0 5px var(--glow-color);
+}
+
+.post-training-actions p {
+    color: var(--text-color-secondary);
+    margin-bottom: 20px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.download-button,
+.inference-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 160px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.download-button {
+    background-color: var(--accent-color-primary);
+    color: var(--bg-color-dark);
+}
+
+.download-button:hover {
+    background-color: #00d0d0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 240, 240, 0.4);
+}
+
+.inference-button {
+    background: linear-gradient(45deg, #6a0dad, #9932cc);
+    color: white;
+}
+
+.inference-button:hover {
+    background: linear-gradient(45deg, #8a2be2, #ba55d3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+.model-info {
+    margin-top: 15px;
+    padding: 8px;
+    background-color: var(--bg-color-dark);
+    border-radius: 4px;
+    color: var(--text-color-secondary);
+    font-size: 0.85rem;
+}
+
+/* Failed Training Actions */
+.failed-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.reset-button {
+    padding: 10px 20px;
+    background-color: var(--error-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.reset-button:hover {
+    background-color: #ff6060;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 64, 64, 0.4);
+}
+
+/* Model Selection Styles */
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: var(--accent-color-primary);
+    box-shadow: 0 0 5px rgba(0, 240, 240, 0.3);
+}
+
+.form-group select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-group select option {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-primary);
+    padding: 10px;
+}
+
+/* Model info text styling */
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .form-group select {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
